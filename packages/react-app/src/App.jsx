@@ -9,7 +9,7 @@ import {
   useContractReader,
   useGasPrice,
   useOnBlock,
-  useUserProviderAndSigner
+  useUserProviderAndSigner,
 } from "eth-hooks";
 import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
 import Fortmatic from "fortmatic";
@@ -481,19 +481,19 @@ function App(props) {
           <Route path="/contracts">
             <Contract
               name="DEX"
-              signer={userSigner}
-              provider={localProvider}
               address={address}
-              blockExplorer={blockExplorer}
-              contractConfig={contractConfig}
+              injectedProvider={injectedProvider}
+              localProvider={localProvider}
+              mainnetProvider={mainnetProvider}
+              readContracts={readContracts}
+              price={price}
             />
             <Contract
+              title={"🎈 Balloons"}
               name="Balloons"
-              signer={userSigner}
+              show={["balanceOf","approve"]}
               provider={localProvider}
               address={address}
-              blockExplorer={blockExplorer}
-              contractConfig={contractConfig}
             />
           </Route>
         </Switch>
